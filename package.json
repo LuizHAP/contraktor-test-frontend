@@ -1,5 +1,5 @@
 {
-  "name": "with-tailwindcss",
+  "name": "contraktor-test-frontend",
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
@@ -13,8 +13,14 @@
   },
   "devDependencies": {
     "autoprefixer": "10.0.2",
+    "cz-conventional-changelog": "3.3.0",
     "postcss": "8.1.7",
     "tailwindcss": "^2.0.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
