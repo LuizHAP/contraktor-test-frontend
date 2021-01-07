@@ -13,7 +13,9 @@ const Layout: React.FC<LayoutProps> = ({ children, title = '' }) => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <main>{children}</main>
+      <main className="mx-auto max-w-5xl px-4 sm:px-6 md:px-8">
+        {children}
+      </main>
     </div>
   )
 }
