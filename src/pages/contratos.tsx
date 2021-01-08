@@ -1,12 +1,23 @@
 import React from 'react'
 import { Layout } from '@/components/templates'
-import Table from '@/components/molecules/Table'
+import TableContracts from '@/components/molecules/TableContracts'
 import Button from '@/components/atoms/Button'
 
 const Contratos: React.FC = () => {
+
+  const contracts = [
+    {
+      id: 1,
+      title: '1231241',
+      initialDate: '06/12/2020',
+      dueDate: '06/12/2020',
+      file: 'CAMINHO.PDF'
+    }
+  ]
+
   return (
     <Layout title="Contratos - Contraktor">
-      <Table />
+      <TableContracts data={contracts} />
       <Button href="/contratos/novo" text="Adicionar um novo" />
     </Layout>
   )
