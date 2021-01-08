@@ -1,7 +1,15 @@
 import React from 'react'
 
 interface TableProps {
-  data?: Object
+  data?: Array<ContractItem>
+}
+
+interface ContractItem {
+  id: number
+  title: string
+  initialDate: string
+  dueDate: string
+  file: string
 }
 
 const TableContracts: React.FC<TableProps> = ({ data }) => {
@@ -31,7 +39,9 @@ const TableContracts: React.FC<TableProps> = ({ data }) => {
           <td className="hidden md:table-cell py-4 px-6 border-b border-grey-light">
             {dueDate}
           </td>
-          <td className="hidden md:table-cell py-4 px-6 border-b border-grey-light">{file}</td>
+          <td className="hidden md:table-cell py-4 px-6 border-b border-grey-light">
+            {file}
+          </td>
           <td className="py-4 px-4 border-b border-grey-light">
             <div>
               <button className="h-8 px-5 m-2 text-sm text-white transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
