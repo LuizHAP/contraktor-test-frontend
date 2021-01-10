@@ -5,14 +5,17 @@ import Link from 'next/link'
 interface ButtonProps {
   href: string
   text: string
+  textSize: number
 }
 
-const Button: React.FC<ButtonProps> = ({ href, text }) => {
+const Button: React.FC<ButtonProps> = ({ href, text, textSize }) => {
   return (
     <Link href={href}>
-      <button className="uppercase px-8 py-2 rounded-full bg-gray-600 text-blue-50 max-w-max shadow-sm hover:shadow-lg">
-        {text}
-      </button>
+      <a className="relative p-5 bg-green-500 rounded-xl cursor-pointer hover:bg-green-300 transition flex items-center justify-center">
+        <h2 className={`leading-none font-extrabold tracking-tight lg:text-${textSize}xl text-white`}>
+          {text}
+        </h2>
+      </a>
     </Link>
   )
 }
