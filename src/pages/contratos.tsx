@@ -1,10 +1,9 @@
 import React from 'react'
 import { Layout } from '@/components/templates'
-import TableContracts from '@/components/molecules/TableContracts'
-import Button from '@/components/atoms/Button'
+import { TableContracts } from '@/components/molecules'
+import { Button } from '@/components/atoms'
 
 const Contratos: React.FC = () => {
-
   const contracts = [
     {
       id: 1,

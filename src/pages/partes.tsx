@@ -1,7 +1,7 @@
 import React from 'react'
 import { Layout } from '@/components/templates'
-import TableParties from '@/components/molecules/TableParties'
-import Button from '@/components/atoms/Button'
+import { TableParties } from '@/components/molecules'
+import { Button } from '@/components/atoms'
 
 const Partes: React.FC = () => {
   const parties = [
