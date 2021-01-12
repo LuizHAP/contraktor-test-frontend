@@ -17,7 +17,7 @@ const Contratos: React.FC = () => {
   return (
     <Layout title="Contratos - Contraktor">
       <TableContracts data={contracts} />
-      <Button href="/contratos/novo" text="Adicionar um novo" textSize={4} />
+      <Button href="/contratos/novo" text="Adicionar um novo" textSize={1} />
     </Layout>
   )
 }

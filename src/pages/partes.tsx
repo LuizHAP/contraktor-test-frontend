@@ -42,7 +42,7 @@ const Partes: React.FC = () => {
   return (
     <Layout title="Partes - Contraktor">
       <TableParties data={parties} />
-      <Button href="/partes/novo" text="Adicionar um novo" textSize={4} />
+      <Button href="/partes/novo" text="Adicionar um novo" textSize={1} />
     </Layout>
   )
 }
