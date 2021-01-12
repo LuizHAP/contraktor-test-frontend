@@ -11,10 +11,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       case 'GET':
         try {
           const contracts = await db.collection('contracts').find()
-
           res.status(200).json({ success: true, data: contracts })
         } catch (error) {
-          res.status(400).json({ error: 'Nenhum contrato encontrado' })
+          res.status(404).json({ error: 'Nenhum contrato encontrado' })
         }
         break
       case 'POST':
