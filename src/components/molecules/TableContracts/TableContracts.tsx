@@ -12,7 +12,7 @@ interface ContractItem {
   file: string
 }
 
-const TableContracts: React.FC<TableProps> = ({ data }) => {
+const TableContracts: React.FC<TableProps> = ({ data = '' }) => {
   const renderTableHeader = () => {
     let header = Object.keys(data[0])
     return header.map((key, index) => {
@@ -28,7 +28,7 @@ const TableContracts: React.FC<TableProps> = ({ data }) => {
   }
 
   const renderTableData = () => {
-    return data.map((contract, index) => {
+    return data?.map((contract, index) => {
       const { id, title, initialDate, dueDate, file } = contract
       return (
         <tr className="hover:bg-grey-lighter" key={index}>
@@ -80,7 +80,7 @@ const TableContracts: React.FC<TableProps> = ({ data }) => {
               </th>
             </tr>
           </thead>
-          <tbody>{renderTableData()}</tbody>
+          {data && <tbody>{renderTableData()}</tbody>}
         </table>
       </div>
     </div>
