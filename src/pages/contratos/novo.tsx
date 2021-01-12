@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react'
-import { FormHandles, SubmitHandler, Scope } from '@unform/core'
+import { FormHandles, SubmitHandler } from '@unform/core'
 import { Form } from '@unform/web'
 import { Layout } from '@/components/templates'
-import { Dropzone, Input, InputDate } from '@/components/atoms'
+import { Dropzone, Input, InputDate, Button } from '@/components/atoms'
 
 import { toast } from 'react-toastify'
 
@@ -11,7 +11,6 @@ import * as Yup from 'yup'
 import getValidationErrors from '@/utils/getValidationErrors'
 
 const NovoContrato: React.FC = () => {
-  const [numberOfParties, setNumberOfParties] = useState(0)
   const formRef = useRef<FormHandles>(null)
 
   const handleSubmit: SubmitHandler<FormData> = async (
@@ -43,6 +42,8 @@ const NovoContrato: React.FC = () => {
       })
 
       console.log(data)
+
+      reset()
     } catch (err) {
       const validationErrors = {}
       if (err instanceof Yup.ValidationError) {
@@ -79,47 +80,6 @@ const NovoContrato: React.FC = () => {
               label="Data de Vencimento"
               placeholderText="DD/MM/YYYY"
               required
-              size={1 / 2}
-            />
-          </div>
-          <div className="-mx-3 md:flex md:mb-6">
-            <Input
-              name={`parties[${numberOfParties}].name`}
-              size={1 / 2}
-              label="Nome"
-              required
-            />
-            <Input
-              name={`parties[${numberOfParties}].lastname`}
-              size={1 / 2}
-              label="Sobrenome"
-              required
-            />
-          </div>
-          <div className="-mx-3 md:flex md:mb-6">
-            <Input
-              name={`parties[${numberOfParties}].email`}
-              type="email"
-              label="Email"
-              placeholder="mail@mail.com"
-              required
-              size={1}
-            />
-          </div>
-          <div className="-mx-3 md:flex md:mb-6">
-            <Input
-              name={`parties[${numberOfParties}].cpf`}
-              label="CPF"
-              placeholder="XXX.XXX.XXX-XX"
-              mask="cpf"
-              required
-              size={1 / 2}
-            />
-            <Input
-              name={`parties[${numberOfParties}].telephone`}
-              label="Telefone"
-              placeholder="(XX) XXXX-XXXX"
-              mask="telefone"
               size={1 / 2}
             />
           </div>
