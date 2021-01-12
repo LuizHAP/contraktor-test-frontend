@@ -1,5 +1,5 @@
-import React, { useRef } from 'react'
-import { FormHandles, SubmitHandler } from '@unform/core'
+import React, { useRef, useState } from 'react'
+import { FormHandles, SubmitHandler, Scope } from '@unform/core'
 import { Form } from '@unform/web'
 import { Layout } from '@/components/templates'
 import { Dropzone, Input, InputDate } from '@/components/atoms'
@@ -11,6 +11,7 @@ import * as Yup from 'yup'
 import getValidationErrors from '@/utils/getValidationErrors'
 
 const NovoContrato: React.FC = () => {
+  const [numberOfParties, setNumberOfParties] = useState(0)
   const formRef = useRef<FormHandles>(null)
 
   const handleSubmit: SubmitHandler<FormData> = async (
@@ -23,7 +24,18 @@ const NovoContrato: React.FC = () => {
       const schema = Yup.object().shape({
         title: Yup.string().required('O Titulo é obrigatório'),
         initialDate: Yup.date().required('A Data de Início é obrigatória'),
-        dueDate: Yup.date().required('A Data de Vencimento é obrigatória')
+        dueDate: Yup.date().required('A Data de Vencimento é obrigatória'),
+        parties: Yup.array().of(
+          Yup.object().shape({
+            name: Yup.string().required('O nome é obrigatório'),
+            lastname: Yup.string().required('O sobrenome é obrigatório'),
+            email: Yup.string()
+              .email('Digite um email válido')
+              .required('O e-mail é obrigatório'),
+            cpf: Yup.string().required('O CPF é obrigatório'),
+            telephone: Yup.string()
+          })
+        )
       })
 
       await schema.validate(data, {
@@ -31,8 +43,6 @@ const NovoContrato: React.FC = () => {
       })
 
       console.log(data)
-
-      reset()
     } catch (err) {
       const validationErrors = {}
       if (err instanceof Yup.ValidationError) {
@@ -69,6 +79,47 @@ const NovoContrato: React.FC = () => {
               label="Data de Vencimento"
               placeholderText="DD/MM/YYYY"
               required
+              size={1 / 2}
+            />
+          </div>
+          <div className="-mx-3 md:flex md:mb-6">
+            <Input
+              name={`parties[${numberOfParties}].name`}
+              size={1 / 2}
+              label="Nome"
+              required
+            />
+            <Input
+              name={`parties[${numberOfParties}].lastname`}
+              size={1 / 2}
+              label="Sobrenome"
+              required
+            />
+          </div>
+          <div className="-mx-3 md:flex md:mb-6">
+            <Input
+              name={`parties[${numberOfParties}].email`}
+              type="email"
+              label="Email"
+              placeholder="mail@mail.com"
+              required
+              size={1}
+            />
+          </div>
+          <div className="-mx-3 md:flex md:mb-6">
+            <Input
+              name={`parties[${numberOfParties}].cpf`}
+              label="CPF"
+              placeholder="XXX.XXX.XXX-XX"
+              mask="cpf"
+              required
+              size={1 / 2}
+            />
+            <Input
+              name={`parties[${numberOfParties}].telephone`}
+              label="Telefone"
+              placeholder="(XX) XXXX-XXXX"
+              mask="telefone"
               size={1 / 2}
             />
           </div>
