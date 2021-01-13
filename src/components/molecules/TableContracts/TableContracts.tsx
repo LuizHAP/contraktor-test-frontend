@@ -12,21 +12,7 @@ interface ContractItem {
   file: string
 }
 
-const TableContracts: React.FC<TableProps> = ({ data = '' }) => {
-  const renderTableHeader = () => {
-    let header = Object.keys(data[0])
-    return header.map((key, index) => {
-      return (
-        <th
-          className="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light"
-          key={index}
-        >
-          {key}
-        </th>
-      )
-    })
-  }
-
+const TableContracts: React.FC<TableProps> = ({ data }) => {
   const renderTableData = () => {
     return data?.map((contract, index) => {
       const { id, title, initialDate, dueDate, file } = contract
