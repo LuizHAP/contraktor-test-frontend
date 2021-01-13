@@ -4,6 +4,8 @@ import { Form } from '@unform/web'
 import { Layout } from '@/components/templates'
 import { Input } from '@/components/atoms'
 
+import axios from 'axios'
+
 import { toast } from 'react-toastify'
 
 import * as Yup from 'yup'
@@ -34,9 +36,15 @@ const NovaParte: React.FC = () => {
         abortEarly: false
       })
 
-      console.log(data)
-
-      reset()
+      axios
+        .post('http://localhost:3000/api/parties', data)
+        .then(() => {
+          toast.success('Cadastro realizado com sucesso')
+          reset()
+        })
+        .catch(() => {
+          toast.error('Erro no cadastro')
+        })
     } catch (err) {
       const validationErrors = {}
       if (err instanceof Yup.ValidationError) {
