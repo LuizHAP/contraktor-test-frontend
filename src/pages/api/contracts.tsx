@@ -18,7 +18,7 @@ export default async (req: NowRequest, res: NowResponse) => {
         break
       case 'POST':
         try {
-          const contract = await db.collection('contracts').create(req.body)
+          const contract = await db.collection('contracts').insertOne(req.body)
 
           res.status(201).json({ success: true, data: contract })
         } catch (error) {

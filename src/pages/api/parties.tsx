@@ -18,10 +18,11 @@ export default async (req: NowRequest, res: NowResponse) => {
         break
       case 'POST':
         try {
-          const parties = await db.collection('parties').create(req.body)
+          const parties = await db.collection('parties').insertOne(req.body)
 
           res.status(201).json({ success: true, data: parties })
         } catch (error) {
+          console.log(error)
           res.status(400).json({
             success: false,
             error: 'Ocorreu um erro ao enviar o cadastro'
