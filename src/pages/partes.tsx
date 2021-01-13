@@ -31,6 +31,6 @@ export const getStaticProps = async () => {
   const allParties = await axios.get('http://localhost:3000/api/parties')
 
   return {
-    props: allParties.data
+    props: allParties?.data
   }
 }

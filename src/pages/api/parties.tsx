@@ -10,7 +10,7 @@ export default async (req: NowRequest, res: NowResponse) => {
     switch (method) {
       case 'GET':
         try {
-          const parties = await db.collection('parties').find()
+          const parties = await db.collection('parties').find({})
           res.status(200).json({ success: true, data: parties })
         } catch (error) {
           res.status(200).json({ error: 'Nenhum contrato encontrado' })
@@ -19,7 +19,6 @@ export default async (req: NowRequest, res: NowResponse) => {
       case 'POST':
         try {
           const parties = await db.collection('parties').insertOne(req.body)
-
           res.status(201).json({ success: true, data: parties })
         } catch (error) {
           console.log(error)
