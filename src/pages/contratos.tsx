@@ -29,7 +29,7 @@ const Contratos = ({ allContracts }: Props) => {
 export default Contratos
 
 export const getStaticProps = async () => {
-  const allContracts = await axios.get('/api/contracts')
+  const allContracts = await axios.get('http://localhost:3000/api/contracts')
 
   return {
     props: allContracts.data

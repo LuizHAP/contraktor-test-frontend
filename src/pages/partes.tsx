@@ -28,7 +28,7 @@ const Partes = ({ allParties }: Props) => {
 export default Partes
 
 export const getStaticProps = async () => {
-  const allParties = await axios.get('/parties')
+  const allParties = await axios.get('http://localhost:3000/parties')
 
   return {
     props: allParties.data
