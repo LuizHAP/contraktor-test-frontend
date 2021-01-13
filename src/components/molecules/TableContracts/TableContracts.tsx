@@ -1,15 +1,8 @@
 import React from 'react'
 
+import Contract from '@/types/contract'
 interface TableProps {
-  data?: Array<ContractItem>
-}
-
-interface ContractItem {
-  id: number
-  title: string
-  initialDate: string
-  dueDate: string
-  file: string
+  data?: Array<Contract>
 }
 
 const TableContracts: React.FC<TableProps> = ({ data }) => {

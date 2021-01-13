@@ -1,17 +1,9 @@
 import React from 'react'
+
+import Part from '@/types/part'
 interface TableProps {
-  data?: Array<PartItem>
+  data?: Array<Part>
 }
-
-interface PartItem {
-  id: number
-  name: string
-  lastname: string
-  email: string
-  cpf: string
-  telefone: string
-}
-
 const TableParties: React.FC<TableProps> = ({ data }) => {
   return (
     <div className="container w-full mx-auto shadow-md rounded my-4 overflow-x-auto max-h-96">

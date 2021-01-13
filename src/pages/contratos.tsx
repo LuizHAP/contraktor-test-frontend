@@ -7,27 +7,31 @@ import Contract from '@/types/contract'
 
 import api from '@/services/api'
 
-import { NextPage } from 'next'
-
 interface Props {
-  contracts: Contract[]
+  allContracts: Contract[]
 }
 
-const Contratos: NextPage<Props> = ({ contracts }) => {
+const Contratos = ({ allContracts }: Props) => {
   return (
     <Layout title="Contratos - Contraktor">
-      <TableContracts data={contracts} />
+      {allContracts ? (
+        <TableContracts data={allContracts} />
+      ) : (
+        <h1 className="text-xl leading-none font-extrabold tracking-tight text-gray-900 sm:text-1xl lg:text-2xl m-10">
+          Nenhum contrato encontrado
+        </h1>
+      )}
       <Button href="/contratos/novo" text="Adicionar um novo" textSize={1} />
     </Layout>
   )
 }
 
-Contratos.getInitialProps = async ({ req }) => {
-  const res = await api('/contracts')
+export default Contratos
+
+export const getStaticProps = async () => {
+  const allContracts = await api('/contracts')
 
   return {
-    contracts: res.data || null
+    props: allContracts.data
   }
 }
-
-export default Contratos

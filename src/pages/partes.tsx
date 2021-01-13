@@ -3,48 +3,34 @@ import { Layout } from '@/components/templates'
 import { TableParties } from '@/components/molecules'
 import { Button } from '@/components/atoms'
 
-const Partes: React.FC = () => {
-  const parties = [
-    {
-      id: 1,
-      name: 'Wasif',
-      lastname: 'Teste',
-      email: 'wasif@email.com',
-      cpf: '005.914.580-39',
-      telefone: '11111111'
-    },
-    {
-      id: 2,
-      name: 'Ali',
-      lastname: 'Teste',
-      email: 'ali@email.com',
-      cpf: '005.914.580-39',
-      telefone: '11111111'
-    },
-    {
-      id: 3,
-      name: 'Saad',
-      lastname: 'Teste',
-      email: 'saad@email.com',
-      cpf: '005.914.580-39',
-      telefone: '11111111'
-    },
-    {
-      id: 4,
-      name: 'Asad',
-      lastname: 'Teste',
-      email: 'asad@email.com',
-      cpf: '005.914.580-39',
-      telefone: '11111111'
-    }
-  ]
+import Part from '@/types/part'
 
+import api from '@/services/api'
+interface Props {
+  allParties: Part[]
+}
+
+const Partes = ({ allParties }: Props) => {
   return (
     <Layout title="Partes - Contraktor">
-      <TableParties data={parties} />
+      {allParties ? (
+        <TableParties data={allParties} />
+      ) : (
+        <h1 className="text-xl leading-none font-extrabold tracking-tight text-gray-900 sm:text-1xl lg:text-2xl m-10">
+          Nenhuma parte encontrada
+        </h1>
+      )}
       <Button href="/partes/novo" text="Adicionar um novo" textSize={1} />
     </Layout>
   )
 }
 
 export default Partes
+
+export const getStaticProps = async () => {
+  const allParties = await api('/parties')
+
+  return {
+    props: allParties.data
+  }
+}
