@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const Header: React.FC = () => {
   return (
-    <header className="flex flex-col justify-center md:justify-around items-center py-2 md:py-4 shadow-md md:flex-row">
+    <header className="flex flex-col justify-center md:justify-around items-center py-2 md:py-4 shadow-md md:flex-row fixed w-full">
       <Link href="/">
         <Image
           src="/img/contraktor.png"
