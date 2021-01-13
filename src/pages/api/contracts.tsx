@@ -13,7 +13,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           const contracts = await db.collection('contracts').find()
           res.status(200).json({ success: true, data: contracts })
         } catch (error) {
-          res.status(404).json({ error: 'Nenhum contrato encontrado' })
+          res.status(200).json({ error: 'Nenhum contrato encontrado' })
         }
         break
       case 'POST':
@@ -35,6 +35,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         break
     }
   }
-
-  return res.status(500).json({ error: 'client DB is not connected' })
 }
