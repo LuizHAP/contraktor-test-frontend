@@ -1,13 +1,10 @@
 import React from 'react'
 
 import Contract from '@/types/contract'
-interface TableProps {
-  data?: Array<Contract>
-}
 
-const TableContracts: React.FC<TableProps> = ({ data }) => {
+const TableContracts = ({ data }) => {
   const renderTableData = () => {
-    return data?.map((contract, index) => {
+    return data?.map((contract: Contract, index: any) => {
       const { id, title, initialDate, dueDate, file } = contract
       return (
         <tr className="hover:bg-grey-lighter" key={index}>

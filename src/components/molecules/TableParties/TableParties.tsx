@@ -4,7 +4,7 @@ import Part from '@/types/part'
 interface TableProps {
   data?: Array<Part>
 }
-const TableParties: React.FC<TableProps> = ({ data }) => {
+const TableParties = ({ data }) => {
   return (
     <div className="container w-full mx-auto shadow-md rounded my-4 overflow-x-auto max-h-96">
       <div className="overflow-y flex-grow">
@@ -32,7 +32,7 @@ const TableParties: React.FC<TableProps> = ({ data }) => {
             </tr>
           </thead>
           <tbody>
-            {data.map((item, index) => (
+            {data.map((item: Part, index: any) => (
               <tr className="hover:bg-grey-lighter" key={index}>
                 <td className="py-4 px-6 border-b border-grey-light">
                   {item.name}
