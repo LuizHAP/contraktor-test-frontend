@@ -1,7 +1,7 @@
 import { connectToDatabase } from '@/config/mongodb'
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NowRequest, NowResponse } from '@vercel/node'
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async (req: NowRequest, res: NowResponse) => {
   const { method } = req
 
   const { db, client } = await connectToDatabase()

@@ -5,7 +5,7 @@ import { Button } from '@/components/atoms'
 
 import Part from '@/types/part'
 
-import api from '@/services/api'
+import axios from 'axios'
 interface Props {
   allParties: Part[]
 }
@@ -28,7 +28,7 @@ const Partes = ({ allParties }: Props) => {
 export default Partes
 
 export const getStaticProps = async () => {
-  const allParties = await api('/parties')
+  const allParties = await axios.get('/parties')
 
   return {
     props: allParties.data

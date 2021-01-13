@@ -5,7 +5,7 @@ import { Button } from '@/components/atoms'
 
 import Contract from '@/types/contract'
 
-import api from '@/services/api'
+import axios from 'axios'
 
 interface Props {
   allContracts: Contract[]
@@ -29,7 +29,7 @@ const Contratos = ({ allContracts }: Props) => {
 export default Contratos
 
 export const getStaticProps = async () => {
-  const allContracts = await api('/contracts')
+  const allContracts = await axios.get('/api/contracts')
 
   return {
     props: allContracts.data
